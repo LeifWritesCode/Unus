@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <title>Unus: One-Time Secret Sharing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+        <div class="container">
+            <div class="row text-center my-5">
+                <h1>Hello, my name is Unus</h1>
+                <h6>(That means 'one' in latin!)</h6>
+                <p>I use an <a href="https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme">Elliptic Curve Augmented Encryption Scheme</a> to enable speedy and secure secret sharing.</p>
+                <p>Please note that my creator only makes me available for educational purposes, "as is", without warranty of any kind, express or implied.</p>
+            </div>
+            <div class="row mb-5">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Sending a Secret
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>You can push a new secret by sending a <code>POST</code> request to the
+                                    <code>/api/v1/secrets</code> endpoint. I support images in JPEG, PNG and GIF format;
+                                    as
+                                    well as plain strings.
+                                </p>
+                                <p>On success, you'll receive a JSON response similar to the following:</p>
+                                <p><code>{ "Id": 357420373114880, "Passphrase": "byproduct-Colorado-salespeople-unplugged" }</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Retrieving a Secret
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>To retrieve a secret, issue a <code>GET</code> request to
+                                    <code>/api/v1/secrets/:id</code>, where <code>:id</code> is the ID given to you by
+                                    your sharer. You should include an <code>Authorization</code> header that includes
+                                    an HTTP Basic field beginning with <code>Basic</code>, followed by a space, and then
+                                    the password your sharer gave you in <code>base64</code> encoding. That would look
+                                    something like this: <code>Basic bXlzdXBlcnNlY3JldHBhc3N3b3Jk</code>.</p>
+                                <p>Unus is clever. It remembers what was sent to you and returns it to you in the
+                                    correct form. If you were sent a PNG image, for example, that's exactly what you'll
+                                    get back.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">Built with &hearts; by <a href="https://linkedin.com/championofgoats">Leif Walker-Grant</a>. Check out my <a href="https://code.leif.uk/lwg/unus">code!</a></span>
+        </div>
+    </footer>
+</body>
+
+</html>
